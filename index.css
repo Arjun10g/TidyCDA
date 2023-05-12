@@ -194,7 +194,7 @@ p{
 
 pre {
     display: block;
-    padding: 9.5px;
+    padding: 20.5px;
     margin: 0 0 10px;
     font-size: 13px;
     line-height: 1.42857143;
@@ -206,6 +206,7 @@ pre {
     border-radius: 8px;
     max-height: 30vh;
     overflow: scroll;
+    white-space: pre-wrap;
 }
 
 code{
@@ -214,4 +215,10 @@ code{
     white-space: pre-wrap;
     background-color: transparent;
     border-radius: 0;
+}
+
+img{
+    margin: auto;
+    display: block;
+    width: 100%;
 }

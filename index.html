@@ -353,13 +353,22 @@ Suicide %&gt;% pull(method) %&gt;% fct_count() </code></pre>
 }</code></pre>
 <p>For simple tables, the function has easy implementation.</p>
 <pre class="r"><code>HairEyeColor %&gt;% as.data.frame() %&gt;% expand.dft() %&gt;% tabyl(Hair,Sex) %&gt;% apa_table_function(&#39;Table 1&#39;,&#39;Hair Color by Sex&#39;)</code></pre>
+
+<img src="img1.jpeg" alt="">
+
 <p>For more complex tables, you can utilize helper functions such as pack_rows in kableExtra to provide additional functionality. Since, in this case we obtain a list with each list element containing five rows.</p>
 <p>We can either use the map function to iterate over each list item and produce two plots for Males and Females.</p>
 <pre class="r"><code>HairEyeColor %&gt;% as.data.frame() %&gt;% expand.dft() %&gt;% tabyl(Hair,Eye,Sex) %&gt;% map2(c(&#39;Females&#39;, &#39; Males&#39;),~apa_table_function(.x,&#39;Table 2&#39;,paste0(&#39;Hair color and Eye color for&#39;, .y)))</code></pre>
+<img src="img2.jpeg" alt="">
+<img src="img3.jpeg" alt="">
 
 <p>Or, we can utilize pack_rows() to combine the two into a single table. However, this method utilizes more intricate knowledge of the kableExtra package.</p>
 <pre class="r"><code>HairEyeColor %&gt;% as.data.frame() %&gt;% expand.dft() %&gt;% tabyl(Hair,Eye,Sex) %&gt;%
-  rlist::list.rbind() %&gt;% remove_rownames() %&gt;% apa_table_function(&#39;Table 3&#39;, &#39;Hair and Eye Color by Sex&#39;) %&gt;% pack_rows(&#39;Female&#39;, 1,4,label_row_css = &#39;border-bottom: 1px solid black; text-indent: 1.3cm;&#39;) %&gt;% pack_rows(&#39;Male&#39;, 5,8,label_row_css = &#39;border-top: 1px solid black;border-bottom: 1px solid black; text-indent: 1.3cm;&#39;) %&gt;% row_spec(8, extra_css = &#39;border-bottom: none&#39;)</code></pre>        
+  rlist::list.rbind() %&gt;% remove_rownames() %&gt;% apa_table_function(&#39;Table 3&#39;, &#39;Hair and Eye Color by Sex&#39;) %&gt;% pack_rows(&#39;Female&#39;, 1,4,label_row_css = &#39;border-bottom: 1px solid black; text-indent: 1.3cm;&#39;) %&gt;% pack_rows(&#39;Male&#39;, 5,8,label_row_css = &#39;border-top: 1px solid black;border-bottom: 1px solid black; text-indent: 1.3cm;&#39;) %&gt;% row_spec(8, extra_css = &#39;border-bottom: none&#39;)</code></pre>   
+  <img src="img4.jpeg" alt="">     
     </div>
+        <div class="content6"></div>
+
+
 </body>
 </html>
